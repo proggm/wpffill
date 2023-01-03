@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище TestImportModelContainer" CdmEntityContainer="TestImportEntities1">
+    <EntitySetMapping Name="IDMaterial">
+      <EntityTypeMapping TypeName="TestImportModel.IDMaterial">
+        <MappingFragment StoreEntitySet="IDMaterial">
+          <ScalarProperty Name="TypeMaterial" ColumnName="TypeMaterial" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IDNameProduct">
+      <EntityTypeMapping TypeName="TestImportModel.IDNameProduct">
+        <MappingFragment StoreEntitySet="IDNameProduct">
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IDTypeProduct">
+      <EntityTypeMapping TypeName="TestImportModel.IDTypeProduct">
+        <MappingFragment StoreEntitySet="IDTypeProduct">
+          <ScalarProperty Name="TypeProduct" ColumnName="TypeProduct" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="TestImportModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+          <ScalarProperty Name="IDMaterial" ColumnName="IDMaterial" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="TestImportModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Article" ColumnName="Article" />
+          <ScalarProperty Name="IDNameProduct" ColumnName="IDNameProduct" />
+          <ScalarProperty Name="Required" ColumnName="Required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImport">
+      <EntityTypeMapping TypeName="TestImportModel.ProductImport">
+        <MappingFragment StoreEntitySet="ProductImport">
+          <ScalarProperty Name="Article" ColumnName="Article" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="IDTypeProduct" ColumnName="IDTypeProduct" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Production" ColumnName="Production" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TestImportModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

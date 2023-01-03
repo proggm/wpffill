@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище TestImportModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="IDMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TypeMaterial" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IDNameProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="NameProduct" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IDTypeProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TypeProduct" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NameMaterial" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="IDMaterial" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Unit" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Quantity1" Type="int" Nullable="false" />
+    <Property Name="Minimum" Type="int" Nullable="false" />
+    <Property Name="cost" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Article" Type="int" Nullable="false" />
+    <Property Name="IDNameProduct" Type="int" Nullable="false" />
+    <Property Name="Required" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductImport">
+    <Key>
+      <PropertyRef Name="Article" />
+    </Key>
+    <Property Name="Article" Type="int" Nullable="false" />
+    <Property Name="Minimum" Type="money" Nullable="false" />
+    <Property Name="image" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="IDTypeProduct" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Production" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Material_IDMaterial">
+    <End Role="IDMaterial" Type="Self.IDMaterial" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDMaterial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="IDMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_IDNameProduct">
+    <End Role="IDNameProduct" Type="Self.IDNameProduct" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDNameProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IDNameProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductImport_IDTypeProduct">
+    <End Role="IDTypeProduct" Type="Self.IDTypeProduct" Multiplicity="1" />
+    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDTypeProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImport">
+        <PropertyRef Name="IDTypeProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище TestImportModelContainer">
+    <EntitySet Name="IDMaterial" EntityType="Self.IDMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IDNameProduct" EntityType="Self.IDNameProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IDTypeProduct" EntityType="Self.IDTypeProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductImport" EntityType="Self.ProductImport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Material_IDMaterial" Association="Self.FK_Material_IDMaterial">
+      <End Role="IDMaterial" EntitySet="IDMaterial" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_IDNameProduct" Association="Self.FK_Product_IDNameProduct">
+      <End Role="IDNameProduct" EntitySet="IDNameProduct" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductImport_IDTypeProduct" Association="Self.FK_ProductImport_IDTypeProduct">
+      <End Role="IDTypeProduct" EntitySet="IDTypeProduct" />
+      <End Role="ProductImport" EntitySet="ProductImport" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

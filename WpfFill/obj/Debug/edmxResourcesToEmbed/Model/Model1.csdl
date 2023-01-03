@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestImportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="IDMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TypeMaterial" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Material" Relationship="Self.FK_Material_IDMaterial" FromRole="IDMaterial" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="IDNameProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="NameProduct" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_IDNameProduct" FromRole="IDNameProduct" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="IDTypeProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TypeProduct" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProductImport" Relationship="Self.FK_ProductImport_IDTypeProduct" FromRole="IDTypeProduct" ToRole="ProductImport" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NameMaterial" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDMaterial" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Quantity1" Type="Int32" Nullable="false" />
+    <Property Name="Minimum" Type="Int32" Nullable="false" />
+    <Property Name="cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="IDMaterial1" Relationship="Self.FK_Material_IDMaterial" FromRole="Material" ToRole="IDMaterial" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Article" Type="Int32" Nullable="false" />
+    <Property Name="IDNameProduct" Type="Int32" Nullable="false" />
+    <Property Name="Required" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IDNameProduct1" Relationship="Self.FK_Product_IDNameProduct" FromRole="Product" ToRole="IDNameProduct" />
+  </EntityType>
+  <EntityType Name="ProductImport">
+    <Key>
+      <PropertyRef Name="Article" />
+    </Key>
+    <Property Name="Article" Type="Int32" Nullable="false" />
+    <Property Name="Minimum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDTypeProduct" Type="Int32" Nullable="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Production" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IDTypeProduct1" Relationship="Self.FK_ProductImport_IDTypeProduct" FromRole="ProductImport" ToRole="IDTypeProduct" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Material_IDMaterial">
+    <End Role="IDMaterial" Type="Self.IDMaterial" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDMaterial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="IDMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_IDNameProduct">
+    <End Role="IDNameProduct" Type="Self.IDNameProduct" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDNameProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IDNameProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductImport_IDTypeProduct">
+    <End Role="IDTypeProduct" Type="Self.IDTypeProduct" Multiplicity="1" />
+    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IDTypeProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImport">
+        <PropertyRef Name="IDTypeProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestImportEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="IDMaterial" EntityType="Self.IDMaterial" />
+    <EntitySet Name="IDNameProduct" EntityType="Self.IDNameProduct" />
+    <EntitySet Name="IDTypeProduct" EntityType="Self.IDTypeProduct" />
+    <EntitySet Name="Material" EntityType="Self.Material" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductImport" EntityType="Self.ProductImport" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Material_IDMaterial" Association="Self.FK_Material_IDMaterial">
+      <End Role="IDMaterial" EntitySet="IDMaterial" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_IDNameProduct" Association="Self.FK_Product_IDNameProduct">
+      <End Role="IDNameProduct" EntitySet="IDNameProduct" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductImport_IDTypeProduct" Association="Self.FK_ProductImport_IDTypeProduct">
+      <End Role="IDTypeProduct" EntitySet="IDTypeProduct" />
+      <End Role="ProductImport" EntitySet="ProductImport" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
