@@ -39,11 +39,14 @@
         <Grid Grid.Row="2">
             <WrapPanel>
             <Button Width="100" Height="35" Content="TypeMaterial" Click="Button_Click"/>
-                <Button Width="100" Content="Product" Click="Button_Click_1"/>
-                <Button Width="100" Content="NameProduct" Click="Button_Click_2"/>
-                <Button Width="100" Content="ProductImport" Click="Button_Click_3"/>
-                <Button Width="100"  Content="TypeProduct" Click="Button_Click_4"/>
-                <Button Width="100" Content="Завершение" Click="Button_Click_5" />
+                <Button Width="75" Content="Product" Click="Button_Click_1"/>
+                <Button Width="75" Content="NameProduct" Click="Button_Click_2"/>
+                <Button Width="75" Content="ProductImport" Click="Button_Click_3"/>
+                <Button Width="75"  Content="TypeProduct" Click="Button_Click_4"/>
+                <Button Width="75" Content="Добавление" Click="Button_Click_6" />
+                <Button Width="75" Content="Редактирование" Click="Button_Click_7"/>
+                <Button Width="75" Content="Удаление" Click="Button_Click_8" />
+                <Button Width="75" Content="Завершение" Click="Button_Click_5" />
             </WrapPanel>
         </Grid>
     </Grid>

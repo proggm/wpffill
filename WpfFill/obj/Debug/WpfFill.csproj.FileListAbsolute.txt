@@ -33,3 +33,5 @@ E:\проекты\WpfFill\WpfFill\obj\Debug\Views\Pages\ProductImport.g.cs
 E:\проекты\WpfFill\WpfFill\obj\Debug\Views\Pages\ProductImport.baml
 E:\проекты\WpfFill\WpfFill\obj\Debug\Views\Pages\IDtypePRODUCT.g.cs
 E:\проекты\WpfFill\WpfFill\obj\Debug\Views\Pages\IDtypePRODUCT.baml
+E:\проекты\wpfFill\WpfFill\obj\Debug\Views\Pages\ActionPage.g.cs
+E:\проекты\wpfFill\WpfFill\obj\Debug\Views\Pages\ActionPage.baml

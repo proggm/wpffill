@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfFill.Context;
+using WpfFill.Model;
 
 namespace WpfFill.Views.Pages
 {
@@ -64,6 +65,34 @@ namespace WpfFill.Views.Pages
         private void tx1_TextChanged(object sender, TextChangedEventArgs e)
         {
             DataView.ItemsSource = AppData.db.Material.Where(item => item.ID.ToString().Contains(tx1.Text) || item.NameMaterial.Contains(tx1.Text)).ToList();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ActionPage(new Model.Material()));
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = (Material)DataView.SelectedItem;
+            if (selectedItem != null)
+            {
+                NavigationService.Navigate(new ActionPage(selectedItem));
+            }
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = (Material)DataView.SelectedItem;
+            if (selectedItem != null)
+            {
+                AppData.db.Material.Remove(selectedItem);
+                AppData.db.SaveChanges();
+                Page_Loaded(null,null);
+                MessageBox.Show("Удаление","Успешно", MessageBoxButton.OK,MessageBoxImage.Information);
+            }
+                
+
         }
     }
 }
